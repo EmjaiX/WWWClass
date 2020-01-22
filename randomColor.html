@@ -2,13 +2,55 @@
 <html>
 <head>
 <title> LOL</title>
-<script>
-var color = '#';
-var a = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'];
-for(int i=0;i<6;i++){
-  color+= a[MATH.foor(MATH.random()*16)];
+<style>
+  body::after{
+    opacity: .9;
+    background-image: url("eh.jpg");
+  }
+  body{
+    opacity: .6;
+  }
+  
+#um{
+  padding: 2vw;
+  width: 10vw;
+  text-align: center;
+  position: absolute;
 }
-document.body.style.backgroundColor =color;
+</style>
+<script>
+function getColor(){
+  var color = '#';
+  var a = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'];
+
+  for(var i=0;i<6;i++){
+    color+= a[Math.floor(Math.random()*16)];
+  }
+  return color;
+}
+function colorize(){
+  document.body.style.backgroundColor = getColor();
+}  
+function colorizediv(){
+  document.getElementById("um").style.backgroundColor = getColor();
+  document.getElementById("um").style.color = getColor();
+}
+function getCoord(){
+  var coord = Math.floor(Math.random()*1000) + 'px';
+  return coord;
+}
+function jump(){
+  document.getElementById("um").style.top =  getCoord();
+  document.getElementById("um").style.left = getCoord() ;
+
+}
+  setInterval(jump,300);
+  setInterval(colorize,300);
+  setInterval(colorizediv,500);
 </script>
 </head>
-<body>
+<body onload="colorize()">
+  <button onclick="colorizediv()">color</button>
+  <div id="um"> words</div>
+</body>
+</html>
