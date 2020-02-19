@@ -3,51 +3,96 @@
 
 <head>
     <title>Stuff</title>
-    <link rel="stylesheet" type="text/css" href="src/css.css">
+    <!--<link rel="stylesheet" type="text/css" href="src/css.css">-->
 </head>
+<style>
+    .form-container {
+        width: 100%;
+        display: flex;
+    }
+    
+    .calculator {
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .calculator div {
+        margin: auto;
+    }
+</style>
+
 <body>
     <div class="form-container">
         <form class="calculator">
             <div>
-                <input type="text"/>
+                <input type="text" id="valz" name="valz" />
             </div>
             <br><br>
             <div>
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>+</button>
+                <button class="val">1</button>
+                <button class="val">2</button>
+                <button class="val">3</button>
+                <button class="ope">+</button>
             </div>
             <br>
             <div>
-                <button>4</button>
-                <button>5</button>
-                <button>6</button>
-                <button>-</button>
+                <button class="val">4</button>
+                <button class="val">5</button>
+                <button class="val">6</button>
+                <button class="ope">-</button>
             </div>
             <br>
             <div>
-                <button>7</button>
-                <button>8</button>
-                <button>9</button>
-                <button>/</button>
+                <button class="val">7</button>
+                <button class="val">8</button>
+                <button class="val">9</button>
+                <button class="ope">/</button>
             </div>
             <br>
             <div>
-                <button>C</button>
-                <button>0</button>
+                <button class="ope">C</button>
+                <button class="val">0</button>
                 <button type="submit">=</button>
-                <button>*</button>
+                <button class="ope">*</button>
             </div>
         </form>
     </div>
     <script>
-        const buttons = document.querySelectorAll("button");
-        buttons.addEventListener("click",(e)=>{
-            console.log(e.getSource());
-        })
-        function append($number){
+        let result = 0;
+        const form = document.querySelector("form");
+        let inputbox = document.getElementById("valz");
+        const numberBtn = document.querySelectorAll(".val");
+        numberBtn.forEach(btn => btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            let val = btn.innerHTML;
+            append(btn.innerHTML);
 
+        }));
+        const operatorBtn = document.querySelectorAll(".ope");
+        operatorBtn.forEach(btn => btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            let val = btn.innerHTML;
+            let result = 0;
+            if (e.getSourse == "+") {
+                result += val;
+                inputbox.value = val;
+            } else if (val == "-") {
+                result -= val;
+                inputbox.value = val;
+            } else if (val == "*") {
+                result *= val;
+                inputbox.value = val;
+            } else if (val == "/") {
+                result /= val;
+                inputbox.value = val;
+            }
+        }));
+
+
+
+        function append(number) {
+            inputbox.value += number;
         }
     </script>
 </body>
