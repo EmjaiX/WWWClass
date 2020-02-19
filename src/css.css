@@ -1,0 +1,36 @@
+body {
+    margin: 0%;
+    display: flex;
+    flex-direction: column;
+    background-image: linear-gradient(-141deg, #9fb8ad 0%, #1fc8db 65%, #2cb5e8 83%);
+}
+.form-container{
+    display: flex;
+    flex-direction: column;
+    padding: 5vw;
+    background-color: #ccc;
+    border-radius: 10vw;
+
+}
+.calculator{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+.calculator div{
+    margin: auto;
+}
+.calculator div{
+    margin: auto;
+}
+.calculator div button{
+    width: 5vw;
+    height: 5vw;
+    background-color: #b76e79;
+    border-radius: 10vw;
+    border: none;
+}
+.calculator div button:hover{
+    background-color: #88525a;
+}
+
