@@ -3,7 +3,7 @@
 
 <head>
     <title>Stuff</title>
-    <!--<link rel="stylesheet" type="text/css" href="src/css.css">-->
+    <link rel="stylesheet" type="text/css" href="src/css.css">
 </head>
 <style>
     .form-container {
@@ -53,7 +53,7 @@
             <div>
                 <button class="ope">C</button>
                 <button class="val">0</button>
-                <button type="submit">=</button>
+                <button class="ope">=</button>
                 <button class="ope">*</button>
             </div>
         </form>
@@ -73,19 +73,22 @@
         operatorBtn.forEach(btn => btn.addEventListener("click", (e) => {
             e.preventDefault();
             let val = btn.innerHTML;
-            let result = 0;
-            if (e.getSourse == "+") {
-                result += val;
-                inputbox.value = val;
+            if (val == "+") {
+                result += parseInt(inputbox.value);
+                console.log(result);
+                inputbox.value = parseInt(inputbox.value);
             } else if (val == "-") {
-                result -= val;
-                inputbox.value = val;
+                result -= inputbox.value;
+                inputbox.value -= parseInt(inputbox.value);
             } else if (val == "*") {
-                result *= val;
-                inputbox.value = val;
+                result *= inputbox.value;
+                inputbox.value = '';
             } else if (val == "/") {
-                result /= val;
-                inputbox.value = val;
+                result /= inputbox.value;
+                inputbox.value = '';
+            }else if (val == "=") {
+                inputbox.value = result;
+                console.log(result);
             }
         }));
 
