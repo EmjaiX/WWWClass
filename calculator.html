@@ -60,6 +60,7 @@
     </div>
     <script>
         let result = 0;
+        let previousOp;
         const form = document.querySelector("form");
         let inputbox = document.getElementById("valz");
         const numberBtn = document.querySelectorAll(".val");
@@ -75,17 +76,22 @@
             let val = btn.innerHTML;
             if (val == "+") {
                 result += parseInt(inputbox.value);
+                previousOp = "+";
                 inputbox.value = 0;
             } else if (val == "-") {
                 result -= inputbox.value;
+                previousOp = "-";
                 inputbox.value = 0;
             } else if (val == "*") {
                 result *= inputbox.value;
+                previousOp = "*";
                 inputbox.value = 0;
             } else if (val == "/") {
                 result /= inputbox.value;
+                previousOp = "/";
                 inputbox.value = 0;
             } else if (val == "=") {
+                previousOp == "+" ? result += inputbox.value : previousOp == "-" ? result -= inputbox.value : previousOp == "*" ? result *= inputbox.value : result /= inputbox.value;
                 inputbox.value = result;
             }
         }));
