@@ -26,7 +26,7 @@
     <div class="form-container">
         <form class="calculator">
             <div>
-                <input type="text" id="valz" name="valz" />
+                <input type="text" id="valz" name="valz" value=0 />
             </div>
             <br><br>
             <div>
@@ -66,7 +66,7 @@
         numberBtn.forEach(btn => btn.addEventListener("click", (e) => {
             e.preventDefault();
             let val = btn.innerHTML;
-            append(btn.innerHTML);
+            inputbox.value == 0 || val == "0" ? inputbox.value = val : append(btn.innerHTML);
 
         }));
         const operatorBtn = document.querySelectorAll(".ope");
@@ -75,20 +75,18 @@
             let val = btn.innerHTML;
             if (val == "+") {
                 result += parseInt(inputbox.value);
-                console.log(result);
-                inputbox.value = parseInt(inputbox.value);
+                inputbox.value = 0;
             } else if (val == "-") {
                 result -= inputbox.value;
-                inputbox.value -= parseInt(inputbox.value);
+                inputbox.value = 0;
             } else if (val == "*") {
                 result *= inputbox.value;
-                inputbox.value = '';
+                inputbox.value = 0;
             } else if (val == "/") {
                 result /= inputbox.value;
-                inputbox.value = '';
-            }else if (val == "=") {
+                inputbox.value = 0;
+            } else if (val == "=") {
                 inputbox.value = result;
-                console.log(result);
             }
         }));
 
